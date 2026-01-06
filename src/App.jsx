@@ -1,7 +1,9 @@
+import AppRoutes from "./routes";
+
 function App() {
   return (
     <>
-      <p>Pokédex React</p>
+      <AppRoutes></AppRoutes>
     </>
   );
 }

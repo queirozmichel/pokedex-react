@@ -1,13 +1,15 @@
-import { Button } from "@mui/material";
 import { Routes, Route, Navigate } from "react-router-dom";
+import Layout from "../Layout/Layout";
 
-function AppRoutes() {
+export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Button>Teste</Button>}></Route>
-      <Route path="*" element={<Navigate to="/"></Navigate>}></Route>
+      <Route element={<Layout></Layout>}>
+        <Route path="/" element={<Navigate to="/pokedex"></Navigate>}></Route>
+        <Route path="/pokedex" element={<Navigate to="/pokedex"></Navigate>}></Route>
+        <Route path="/quiz" element={<Navigate to="/quiz"></Navigate>}></Route>
+        <Route path="*" element={<Navigate to="/pokedex"></Navigate>}></Route>
+      </Route>
     </Routes>
   );
 }
-
-export default AppRoutes;
