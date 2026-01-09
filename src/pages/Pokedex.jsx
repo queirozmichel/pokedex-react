@@ -11,9 +11,17 @@ export default function Pokedex() {
   }, []);
 
   const getPokemons = () => {
+    var endpoints = [];
+
+    for (let i = 1; i <= 50; i++) {
+      endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}`);
+    }
+
     axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=50&offset=0")
-      .then((response) => setPokemons(response.data.results))
+      .all(endpoints.map((endpoint) => axios.get(endpoint)))
+      .then((response) => {
+        setPokemons(response);
+      })
       .catch((err) => console.log(err));
   };
 
